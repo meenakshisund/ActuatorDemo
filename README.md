@@ -2,9 +2,17 @@
 
 Actuator has endpoints like /info, /health, /env, /metrics. 
 
-By default only /info and /health are enabled for web. We need to include other endpoints if neede using this property
+By default only /info and /health are enabled for web. We need to include other endpoints if needed using this property
 
-management.endpoints.web.exposure.include=info,health,metrics,env
+**management.endpoints.web.exposure.include=info,health,metrics,env**
+
+Few other properties to expose /info endpoint with additional details:
+
+**info.app.name=Spring Boot Actuator Application**
+
+**info.app.description=This is my first spring boot application to explore Actuator**
+
+**info.app.version=@project.version@**
 
 To use:
 
