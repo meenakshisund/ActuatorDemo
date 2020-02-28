@@ -15,15 +15,30 @@ import java.util.Map;
 @RequestMapping("/weekdays")
 public class EnumController {
 
-    @GetMapping()
+    @GetMapping(produces = {"application/vnd.actuator.v1+json"})
     public Map displayAllDays() throws UnknownHostException {
+        List<String> days = new ArrayList<>();
+        for(Weekdays item : Weekdays.values()){
+            days.add(item.name());
+        }
+        Map<String, Object> map = new HashMap<>();
+        map.put("weekDays", days);
+
+        return map;
+    }
+
+    @GetMapping(produces = {"application/vnd.actuator.v2+json"})
+    public Map displayAllDaysWithIpAddress() throws UnknownHostException {
         List<String> days = new ArrayList<>();
         for(Weekdays item : Weekdays.values()){
             days.add(item.name());
         }
 
         Map<String, Object> map = new HashMap<>();
-        map.put("ipAdress", InetAddress.getLocalHost().getHostAddress());
+        long start = System.currentTimeMillis();
+        map.put("ipAddress", InetAddress.getLocalHost().getHostAddress());
+        long end = System.currentTimeMillis();
+        System.out.println(end-start);
         map.put("weekDays", days);
 
         return map;
