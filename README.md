@@ -22,6 +22,11 @@ http://localhost:8080/actuator/metrics - This lists down the properties that can
 
 Ex: http://localhost:8080/actuator/metrics/system.cpu.count
 
+docker:
+1. Create Dockerfile
+2. docker build -f Dockerfile -t actuator-image:1.0
+3. docker run -p 8080:8080 actuator-image:1.0
+
 References:
 1. https://docs.spring.io/spring-boot/docs/2.2.4.RELEASE/reference/htmlsingle/#production-ready
 2. https://www.baeldung.com/spring-boot-actuators
